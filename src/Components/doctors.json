@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. Sarah Johnson",
+        "credentials": "PhD in Clinical Psychology",
+        "specialization": "Anxiety & Stress Management",
+        "experience": "8+ years",
+        "workingDays": "Monday - Friday",
+        "workingHours": "9:00 AM - 6:00 PM",
+        "consultationModes": ["Virtual", "Physical"],
+        "bio": "Specializes in cognitive behavioral therapy and mindfulness techniques for anxiety disorders."
+    },
+    {
+        "id": 2,
+        "name": "Dr. Michael Chen",
+        "credentials": "MD, Psychiatrist",
+        "specialization": "Depression & Mood Disorders",
+        "experience": "12+ years",
+        "workingDays": "Monday - Saturday",
+        "workingHours": "10:00 AM - 7:00 PM",
+        "consultationModes": ["Virtual", "Physical"],
+        "bio": "Expert in treating depression, bipolar disorder, and other mood-related conditions."
+    },
+    {
+        "id": 3,
+        "name": "Dr. Aisha Khan",
+        "credentials": "MSc in Counseling Psychology",
+        "specialization": "Relationship & Family Counseling",
+        "experience": "6+ years",
+        "workingDays": "Tuesday - Saturday",
+        "workingHours": "11:00 AM - 8:00 PM",
+        "consultationModes": ["Virtual", "Physical"],
+        "bio": "Focuses on couples therapy, family dynamics, and interpersonal relationship issues."
+    },
+    {
+        "id": 4,
+        "name": "Dr. Lisa Brown",
+        "credentials": "PhD in Psychology",
+        "specialization": "General Mental Health",
+        "experience": "15+ years",
+        "workingDays": "Monday - Friday",
+        "workingHours": "8:00 AM - 5:00 PM",
+        "consultationModes": ["Virtual", "Physical"],
+        "bio": "Comprehensive mental health support with expertise in various therapeutic approaches."
+    },
+    {
+        "id": 5,
+        "name": "Dr. James Wilson",
+        "credentials": "MSc in Child Psychology",
+        "specialization": "Teenage & Adolescent Psychology",
+        "experience": "10+ years",
+        "workingDays": "Monday - Friday",
+        "workingHours": "2:00 PM - 9:00 PM",
+        "consultationModes": ["Virtual", "Physical"],
+        "bio": "Specialized in working with teenagers and young adults dealing with behavioral and emotional challenges."
+    }
+]

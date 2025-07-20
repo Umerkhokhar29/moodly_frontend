@@ -1,0 +1,117 @@
+
+body {
+    background-image: url('../Assets/Background_Image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .btn-signup {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+  
+  .btn-signup:hover {
+    opacity: 0.9;
+    color: white;
+  }
+  
+  .btn-login {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  background-blend-mode: overlay;
+  color: black;
+  border: 2px solid black;
+  border-radius: 20px;
+  }
+  
+  
+  .btn-login:hover {
+    color: white;
+    opacity: 0.9;
+  }
+ 
+  .question-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    height: 500px; /* ✅ Same height for left and right */
+  }
+  
+.qa-title {
+  font-family: 'Fredoka', cursive;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.qa-question {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.qa-options {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+.qa-option input[type='radio'] {
+  accent-color: #f593b5;
+  transform: scale(1.2);
+}
+
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.navigation-buttons button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+  color: black;
+  font-weight: 500;
+}
+.navigation-buttons button:hover {
+  color: white;
+  opacity: 0.9;
+}
+
+/* Outer container — make it transparent and remove shadow */
+.qa-container {
+  background: transparent;
+  box-shadow: none;
+  padding: 0; /* remove any default padding here */
+}
+
+
+.InnerLayer {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-bottom: 20px;
+}
+

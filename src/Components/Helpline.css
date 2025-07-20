@@ -1,0 +1,37 @@
+body {
+    background-image: url('../Assets/Background_Image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .btn-signup {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+  
+  .btn-signup:hover {
+    opacity: 0.9;
+    color: white;
+  }
+  
+  .btn-login {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  background-blend-mode: overlay;
+  color: black;
+  border: 2px solid black;
+  border-radius: 20px;
+  }
+  
+  
+  .btn-login:hover {
+    color: white;
+    opacity: 0.9;
+  }

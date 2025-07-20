@@ -1,0 +1,188 @@
+body {
+    background-image: url('../Assets/Background_Image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .btn-signup {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+  
+  .btn-signup:hover {
+    opacity: 0.9;
+    color: white;
+  }
+  
+  .btn-login {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  background-blend-mode: overlay;
+  color: black;
+  border: 2px solid black;
+  border-radius: 20px;
+  }
+  
+  
+  .btn-login:hover {
+    color: white;
+    opacity: 0.9;
+  }
+ 
+  .login-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    height: 500px; /* ✅ Same height for left and right */
+  }
+  
+  .login-left,
+  .login-right {
+    flex: 1;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  
+  .bot-img {
+    max-width: 450px;
+    filter: none;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 600px;
+    height: 130%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+.scrollable-form {
+  height: 100%; /* ✅ Full height of parent */
+  overflow-y: auto;
+  padding: 25px 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  width: 85%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin;
+}
+
+/* ✅ Gradient scrollbar for WebKit browsers */
+.scrollable-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-form::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+              linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+
+form label {
+  margin-top: 1.2rem;
+  font-weight: 500;
+}
+
+
+
+  .forgot-link {
+    font-size: 0.9rem;
+    color: #2196f3;
+    text-decoration: none;
+  }
+  
+  .login-btn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+
+  .login-btn:hover {
+    color: white;
+    opacity: 0.9;
+    border: 2px solid black;
+  }
+ 
+  
+  .divider {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+  
+  .google-btn {
+    border: 1px solid black;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+  }
+  .google-btn:hover {
+    opacity: 0.9;
+    border: 2px solid black;
+  }
+ 
+  .logo-img {
+    width: 250px;
+    height: auto;
+    margin: 0 auto 1rem auto; /* top:0, horizontal:auto, bottom:1rem */
+    display: block;
+  }
+
+Styling for the inputs
+form input {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+form select {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  margin-top: 0.4rem;
+  margin-bottom: 0.6rem;
+  
+  
+}
+
+
+/* Styling for buttons remains the same */

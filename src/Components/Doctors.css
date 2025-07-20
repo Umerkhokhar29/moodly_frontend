@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playwrite+IN:wght@100..400&family=Protest+Strike&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Playwrite+IN:wght@100..400&family=Protest+Strike&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-image: url('../Assets/Background_Image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-signup {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.btn-signup:hover {
+    opacity: 0.9;
+    color: white;
+}
+
+.btn-login {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%, #92B3F3 118.08%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-blend-mode: overlay;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.btn-login:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+.btn-appointment {
+    background: linear-gradient(103.19deg, #F593B5 -21.22%, #83A9F3 118.08%);
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.btn-appointment:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+.doctors-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.doctors-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctors-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.doctor-card {
+    background: #ffe5e5;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+}
+
+.doctor-image-container {
+    margin-bottom: 20px;
+}
+
+.doctor-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #333;
+}
+
+.doctor-info {
+    width: 100%;
+}
+
+.doctor-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctor-credentials {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctor-specialization {
+    font-size: 18px;
+    color: #444;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctor-details {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.doctor-details p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+    font-family: "Outfit", sans-serif;
+}
+
+.doctor-details strong {
+    color: #333;
+}
+
+.doctor-bio {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: "Outfit", sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .doctors-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .doctors-title {
+        font-size: 36px;
+    }
+    
+    .doctor-card {
+        padding: 20px;
+    }
+    
+    .doctor-image {
+        width: 100px;
+        height: 100px;
+    }
+}
