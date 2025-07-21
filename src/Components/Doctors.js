@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { auth } from './firebase';
 import doctorsData from './doctors.json';
 import { onAuthStateChanged } from 'firebase/auth';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // Import doctor images - you'll need to add these to your Assets folder
 import doctor1 from '../Assets/doctor1.jpg';
@@ -49,13 +51,33 @@ function Doctors() {
         return () => unsubscribe();
     }, [navigate]);
 
-    const handleLogout = async () => {
-        const confirmLogout = window.confirm("Are you sure you want to logout?");
-        if (confirmLogout) {
-            await auth.signOut();
-            navigate('/');
-        }
-    };
+    const handleLogout = () => {
+                confirmAlert({
+                    customUI: ({ onClose }) => {
+                        return (
+                            <div className="custom-confirm-box">
+                                <h2>Confirm Logout</h2>
+                                <p>Are you sure you want to logout?</p>
+                                <div className="custom-confirm-buttons">
+                                    <button
+                                        className="btn-confirm"
+                                        onClick={async () => {
+                                            onClose();
+                                            await auth.signOut();
+                                            navigate('/');
+                                        }}
+                                    >
+                                        Yes, Logout
+                                    </button>
+                                    <button className="btn-cancel" onClick={onClose}>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        );
+                    }
+                });
+            };
     
     const handleBookAppointment = (doctorId) => {
         navigate(`/appointment/${doctorId}`);
@@ -102,7 +124,7 @@ function Doctors() {
                     className="doctors-section w-100"
                     initial={{ opacity: 0, y: 50 }} 
                     animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 1 }}>
+                    transition={{ duration: 0.3 }}>
                     
                     <h2 className="doctors-title">Our Psychologists</h2>
                     <p className="doctors-subtitle">Start by choosing a psychologist you'd like to book an appointment with.</p>                 
@@ -114,6 +136,7 @@ function Doctors() {
                                         src={doctorImages[doctor.id]} 
                                         alt={doctor.name}
                                         className="doctor-image"
+                                        loading='lazy'
                                     />
                                 </div>
                                 <div className="doctor-info">

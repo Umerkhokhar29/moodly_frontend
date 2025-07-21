@@ -6,6 +6,8 @@ import BotImage from '../Assets/Bot.png';
 import { motion } from 'framer-motion';
 import { auth, provider } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function Chatbot() {
     const navigate = useNavigate();
@@ -107,14 +109,33 @@ function Chatbot() {
         }
     }, [authToken]);
 
-    const handleLogout = async () => {
-        try {
-            await auth.signOut();
-            navigate('/');
-        } catch (error) {
-            console.error('Logout error:', error);
-        }
-    };
+    const handleLogout = () => {
+            confirmAlert({
+                customUI: ({ onClose }) => {
+                    return (
+                        <div className="custom-confirm-box">
+                            <h2>Confirm Logout</h2>
+                            <p>Are you sure you want to logout?</p>
+                            <div className="custom-confirm-buttons">
+                                <button
+                                    className="btn-confirm"
+                                    onClick={async () => {
+                                        onClose();
+                                        await auth.signOut();
+                                        navigate('/');
+                                    }}
+                                >
+                                    Yes, Logout
+                                </button>
+                                <button className="btn-cancel" onClick={onClose}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    );
+                }
+            });
+        };
 
     // Get auth headers for API requests
     const getAuthHeaders = () => {

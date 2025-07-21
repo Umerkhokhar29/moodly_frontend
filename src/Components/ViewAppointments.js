@@ -5,6 +5,8 @@ import { auth } from './firebase';
 import Logo from '../Assets/Logo.png';
 import { motion } from 'framer-motion';
 import './Appointment.css'; // Reuse same CSS
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function ViewAppointments() {
     const navigate = useNavigate();
@@ -60,13 +62,33 @@ function ViewAppointments() {
         }
     }, [user]);
 
-    const handleLogout = async () => {
-        const confirmLogout = window.confirm("Are you sure you want to logout?");
-        if (confirmLogout) {
-            await auth.signOut();
-            navigate('/');
-        }
-    };
+    const handleLogout = () => {
+            confirmAlert({
+                customUI: ({ onClose }) => {
+                    return (
+                        <div className="custom-confirm-box">
+                            <h2>Confirm Logout</h2>
+                            <p>Are you sure you want to logout?</p>
+                            <div className="custom-confirm-buttons">
+                                <button
+                                    className="btn-confirm"
+                                    onClick={async () => {
+                                        onClose();
+                                        await auth.signOut();
+                                        navigate('/');
+                                    }}
+                                >
+                                    Yes, Logout
+                                </button>
+                                <button className="btn-cancel" onClick={onClose}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    );
+                }
+            });
+        };
 
     if (authLoading) {
         return <div className="container-fluid d-flex justify-content-center align-items-center min-vh-100">

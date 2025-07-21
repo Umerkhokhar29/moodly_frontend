@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getIdToken} from 'firebase/auth';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 function Question() {
     const [currentPage, setCurrentPage] = useState(0);
@@ -16,6 +18,7 @@ function Question() {
     const [timeRemaining, setTimeRemaining] = useState(null);
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const [warning, setWarning] = useState("");
 
     // Your existing questions and categories arrays
     const questions = [
@@ -98,13 +101,33 @@ function Question() {
     }
 };
 
-const handleLogout = async () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-        await auth.signOut();
-        navigate('/');
-    }
-};
+const handleLogout = () => {
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className="custom-confirm-box">
+                        <h2>Confirm Logout</h2>
+                        <p>Are you sure you want to logout?</p>
+                        <div className="custom-confirm-buttons">
+                            <button
+                                className="btn-confirm"
+                                onClick={async () => {
+                                    onClose();
+                                    await auth.signOut();
+                                    navigate('/');
+                                }}
+                            >
+                                Yes, Logout
+                            </button>
+                            <button className="btn-cancel" onClick={onClose}>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+        });
+    };
 
     const handleResponseChange = (index, value) => {
         const newResponses = [...responses];
@@ -113,10 +136,21 @@ const handleLogout = async () => {
     };
 
     const handleNext = () => {
-        if (currentPage < questions.length - 1) {
-            setCurrentPage(currentPage + 1);
+        const startIndex = currentPage * 7;
+        const endIndex = startIndex + 7;
+        const currentResponses = responses.slice(startIndex, endIndex);
+
+        const allAnswered = currentResponses.every(response => response !== null);
+
+        if (!allAnswered) {
+            setWarning("Please answer all questions before continuing.");
+            return;
         }
+
+        setWarning(""); // Clear warning
+        setCurrentPage(currentPage + 1);
     };
+
 
     const handlePrevious = () => {
         if (currentPage > 0) {
@@ -145,52 +179,53 @@ const handleLogout = async () => {
     };
 
     const handleSubmit = async () => {
-    if (responses.includes(null)) {
-        alert("Please answer all questions before submitting.");
-        return;
-    }
-
-    const scores = calculateScores();
-    const severityResults = {
-        depressionLabel: determineSeverity(scores.depression, "depression"),
-        anxietyLabel: determineSeverity(scores.anxiety, "anxiety"),
-        stressLabel: determineSeverity(scores.stress, "stress")
-    };
-
-    try {
-        const token = await getIdToken(auth.currentUser);
-        const response = await fetch(`${API_BASE_URL}/api/questionnaire/submit`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                userId: user.uid,
-                responses: responses,
-                scores: scores,
-                severityResults: severityResults
-            })
-        });
-
-        const result = await response.json();
-        
-        if (result.success) {
-            navigate('/result', { 
-                state: { 
-                    ...scores, 
-                    ...severityResults,
-                    submittedAt: new Date().toISOString()
-                } 
-            });
-        } else {
-            alert('Error submitting questionnaire. Please try again.');
+        if (responses.includes(null)) {
+            setWarning("Please answer all questions before submitting.");
+            return;
         }
-    } catch (error) {
-        console.error('Error submitting questionnaire:', error);
-        alert('Network error. Please check your connection and try again.');
-    }
-};
+
+        setWarning(""); // Clear warning
+        const scores = calculateScores();
+        const severityResults = {
+            depressionLabel: determineSeverity(scores.depression, "depression"),
+            anxietyLabel: determineSeverity(scores.anxiety, "anxiety"),
+            stressLabel: determineSeverity(scores.stress, "stress")
+        };
+
+        try {
+            const token = await getIdToken(auth.currentUser);
+            const response = await fetch(`${API_BASE_URL}/api/questionnaire/submit`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: user.uid,
+                    responses: responses,
+                    scores: scores,
+                    severityResults: severityResults
+                })
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                navigate('/result', { 
+                    state: { 
+                        ...scores, 
+                        ...severityResults,
+                        submittedAt: new Date().toISOString()
+                    } 
+                });
+            } else {
+                setWarning('Error submitting questionnaire. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting questionnaire:', error);
+            setWarning('Network error. Please check your connection and try again.');
+        }
+        };
 
     const formatTimeRemaining = (seconds) => {
         const hours = Math.floor(seconds / 3600);
@@ -231,7 +266,7 @@ const handleLogout = async () => {
                         <h2>Questionnaire Not Available</h2>
                         <p>You can take the questionnaire again in {formatTimeRemaining(timeRemaining)}</p>
                         <p>You can only take the questionnaire once every 24 hours.</p>
-                        <Link to="/dashboard" className="btn btn-primary mt-3">Go to Dashboard</Link>
+                        <Link to="/result" className="btn btn-primary mt-3">Go to Result</Link>
                     </div>
                 </div>
             </div>
@@ -308,6 +343,11 @@ const handleLogout = async () => {
                                             </div>
                                         ))}
                                     </form>
+                                    {warning && (
+                                        <p className="qa-warning">
+                                            {warning}
+                                        </p>
+                                    )}
                                     <div className="navigation-buttons">
                                         <button onClick={handlePrevious} disabled={currentPage === 0}>Previous</button>
                                         {currentPage < questions.length - 1 ? (
